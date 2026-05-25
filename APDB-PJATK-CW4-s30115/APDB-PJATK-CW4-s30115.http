@@ -1,0 +1,65 @@
+@APDB_PJATK_CW4_s30115_HostAddress = http://localhost:5077
+
+### GET wszystkich komputerów
+GET {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs
+Accept: application/json
+
+### GET komputera z komponentami (200)
+GET {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/1/components
+Accept: application/json
+
+### GET nieistniejący komputer (404)
+GET {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/9999/components
+Accept: application/json
+
+### POST nowy komputer (201)
+POST {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs
+Content-Type: application/json
+
+{
+  "name": "Gaming Beast X",
+  "weight": 12.5,
+  "warranty": 36,
+  "createdAt": "2026-05-08T09:00:00",
+  "stock": 5
+}
+
+### POST z błędnym body (400)
+POST {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs
+Content-Type: application/json
+
+{
+  "weight": 12.5
+}
+
+### PUT istniejący komputer (200)
+PUT {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/2
+Content-Type: application/json
+
+{
+  "name": "Office Mini Pro v2",
+  "weight": 4.5,
+  "warranty": 30,
+  "createdAt": "2026-04-15T13:30:00",
+  "stock": 10
+}
+
+### PUT nieistniejący komputer (404)
+PUT {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/9999
+Content-Type: application/json
+
+{
+  "name": "X",
+  "weight": 1,
+  "warranty": 1,
+  "createdAt": "2026-01-01T00:00:00",
+  "stock": 1
+}
+
+### DELETE komputera (204) — pamiętaj zmienić id na taki, który istnieje
+DELETE {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/3
+
+### DELETE nieistniejący komputer (404)
+DELETE {{APDB_PJATK_CW4_s30115_HostAddress}}/api/pcs/9999
+
+###
